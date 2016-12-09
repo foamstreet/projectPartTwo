@@ -1,0 +1,619 @@
+html, body {
+	height: 100%;
+	padding-bottom: 200px;
+  transition: background-color 1s;
+}
+
+html {
+	font-family: 'Montserrat', sans-serif;
+	-webkit-transition: background-color 250ms;
+	transition: background-color 250ms;
+	position: relative;
+}
+
+body {
+  position: relative;
+	margin: 0;
+	padding: 0;
+  overflow-x: hidden;
+}
+
+#loader {
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+  border: 16px solid #EEE;
+  border-radius: 50%;
+  border-top: 16px solid #000;
+  position: absolute;
+  margin: -70px 0 0 -70px;
+  top: 50%;
+  left: 50%;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+ 0% { transform: rotate(0deg); }
+ 100% { transform: rotate(360deg); }
+}
+
+.container {
+	height: auto !important;
+	height: 100%;
+	min-height: 100%;
+	margin: 0 auto -4em;
+}
+
+h1 {
+	font-size: 12vw;
+	margin: 2rem 0;
+	text-align: center;
+	-webkit-transition: color 250ms;
+	transition: color 250ms;
+}
+
+h1 span {
+	display: inline-block;
+	-webkit-animation-fill-mode: forwards !important;
+	animation-fill-mode: forwards !important;
+}
+
+header h2 {
+	font-size: 5rem;
+  margin-top: 0;
+  padding-top: 20px;
+	text-align: center;
+}
+
+
+/***** Helper Classes *****/
+
+.pull-left {
+	float: left;
+}
+
+.pull-right {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
+.hide {
+  display: none;
+}
+
+/***** Nav *****/
+
+nav a {
+	color: #bfbfbf;
+	font-size: 7vw;
+	text-decoration: none;
+	-webkit-transition: color 400ms;
+	transition: color 400ms;
+}
+
+nav a:hover {
+	color: #FFF !important;
+}
+
+nav li, footer li {
+	list-style: none;
+}
+
+nav.home ul {
+	padding-left: 3vw;
+}
+
+nav.pop {
+	background-color: #000	;
+	height: 100vh;
+	opacity: .9;
+	position: fixed;
+	-webkit-transition: transform 500ms;
+	transition: transform 500ms;
+	width: 100vw;
+  z-index: 1000;
+}
+
+nav.pop a {
+	font-size: 2rem;
+	padding: 10px;
+}
+
+nav.pop ul {
+	margin-top: 4rem;
+	padding-left: 0;
+}
+
+.pop-in {
+	-webkit-transform: translateX(-100vw);
+	transform: translateX(-100vw);
+}
+
+.pop-out {
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+}
+
+/*
+ * Found this menu button on W3schools
+ * http://www.w3schools.com/howto/howto_css_menu_icon.asp
+ */
+.menu-btn {
+	float: left;
+  position: fixed;
+	padding-top: 10px;
+	margin-left: 10px;
+  z-index: 10000;
+}
+
+.bar1, .bar2, .bar3 {
+	background-color: #333;
+	height: 5px;
+	margin: 6px 0;
+	-webkit-transition: 0.4s;
+  transition: 0.4s;
+  width: 35px;
+}
+
+/* Rotate first bar */
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+/* Fade out the second bar */
+.change .bar2 {
+  opacity: 0;
+}
+
+/* Rotate last bar */
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+/***** Video Styles *****/
+
+video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -100;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#workVideo, #aboutVideo, #contactVideo {
+	display: none;
+}
+
+#aboutVideo {
+	-webkit-transform: translateX(-50%) translateY(-30%);
+	transform: translateX(-50%) translateY(-30%);
+}
+
+.pop-in-left {
+	-webkit-animation: pop-in-l 350ms;
+	animation: pop-in-l 350ms;
+}
+
+.pop-in-right {
+	-webkit-animation: pop-in-r 350ms;
+	animation: pop-in-r 350ms;
+}
+
+.pop-out-left {
+	-webkit-animation: pop-out-l 100ms;
+	animation: pop-out-l 100ms;
+}
+
+.pop-out-right {
+	-webkit-animation: pop-out-r 100ms;
+	animation: pop-out-r 100ms;
+}
+
+#about.home, #work.home, #contact.home {
+	opacity: 0;
+	-webkit-transition: -webkit-transform;
+	transition: -webkit-transform;
+	transition: transform;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+#about.home {
+	animation-delay: 500ms;
+}
+
+#work.home {
+	animation-delay: 850ms;
+}
+
+#contact.home {
+	animation-delay: 1200ms;
+}
+
+#contactGraphic {
+	display: none;
+	box-shadow: 1px 3px 5px #000;
+	font-family: 'VT323', monospace;
+	height: 300px;
+	width: 500px;
+	background-color: #FFF;
+	margin-right: 40px;
+	border: 3px solid #bfbfbf;
+}
+
+#bar {
+	text-align: center;
+	padding: 3px 0;
+	height: 18px;
+	width: 100%;
+	background-color: #000066;
+	color: #FFF;
+}
+
+#fakeInput {
+	border: 1px solid #000;
+	height: 253px;
+	font-size: 1.2rem;
+}
+
+#fakeInput p {
+	padding: 0 10px;
+	margin: 10px 0;
+}
+
+#fakeMenu {
+	border: 1px solid #000;
+	border-bottom: 0;
+	padding: 2px 5px;
+	word-spacing: 10px;
+}
+
+#fakeMenu span {
+	text-decoration: underline;
+}
+
+/**** Animations and Related Styles *****/
+
+/* Slide Header Text on Home */
+.slide-down-in {
+	-webkit-animation: slide-d-in 500ms;
+	animation: slide-d-in 500ms;
+}
+
+.slide-up-in {
+	-webkit-animation: slide-u-in 500ms;
+	animation: slide-u-in 500ms;
+}
+
+.slide-down-out {
+	-webkit-animation: slide-d-out 250ms;
+	animation: slide-d-out 250ms;
+}
+
+.slide-up-out {
+	-webkit-animation: slide-u-out 250ms;
+	animation: slide-u-out 250ms;
+}
+
+@keyframes slide-d-in {
+  from {opacity: 0; transform: translateY(-30%);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes slide-u-in {
+  from {opacity: 0; transform: translateY(30%);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes slide-d-out {
+  from {opacity: 1; transform: translateY(0%);}
+  to {opacity: 0; transform: translateY(-30%);}
+}
+
+@keyframes slide-u-out {
+  from {opacity: 1; transform: translateY(0%);}
+  to {opacity: 0; transform: translateY(30%);}
+}
+
+/* Pop in animations for menu */
+@keyframes pop-in-l {
+  from {opacity: 0; transform: translateX(-10%);}
+  to {opacity: 1; transform: translateX(0);}
+}
+
+@keyframes pop-in-r {
+  from {opacity: 0; transform: translateX(10%);}
+  to {opacity: 1; transform: translateX(0);}
+}
+
+@keyframes pop-out-l {
+  from {opacity: 1; transform: translateX(0);}
+  to {opacity: 0; transform: translateX(-10%);}
+}
+
+@keyframes pop-out-r {
+  from {opacity: 1; transform: translateX(0);}
+  to {opacity: 0; transform: translateX(10%);}
+}
+
+/***** type.js  *****/
+.typed-cursor{
+  opacity: 1;
+  -webkit-animation: blink 0.7s infinite;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink{
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-webkit-keyframes blink{
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes blink{
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/***** Contact *****/
+
+.errors {
+  text-align: center;
+  color: #ff6666;
+}
+
+.title {
+  margin: auto;
+  overflow: hidden;
+  width: 142px;
+}
+
+.container.about {
+  text-align: center;
+}
+
+/***** Form *****/
+
+form div:last-child {
+  margin-top: 20px;
+}
+
+form input[type="radio"] {
+  display: inline-block;
+  height: 125px;
+  width: inherit;
+}
+
+fieldset {
+  border: none;
+}
+
+label {
+  display: inline-block;
+}
+
+label div {
+  font-size: 1.25rem;
+  overflow: hidden;
+}
+
+label + div {
+  margin-top: 40px;
+}
+
+label div.title p {
+  color: #ff6666;
+}
+
+label img {
+  height: 100px;
+  margin: 15px;
+}
+
+label input {
+  background-color: transparent;
+  border-width: 0 0 2px 0;
+  border-bottom: 2px solid #000;
+  margin: auto;
+  padding: 5px 5px 0 5px;
+  width: 250px;
+}
+
+input:focus, button:focus {
+  outline: none;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder  {
+  transition: text-indent 250ms;
+}
+
+input[type="text"], textarea {
+  font-size: 1.8rem;
+}
+
+textarea {
+  border: 2px solid #000;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.name-input {
+  width: 49.5%;
+}
+
+button {
+  display: block;
+  margin: auto;
+  background: #FFF;
+  border: 2px solid #555;
+  border-radius: 5px;
+  font-size: .8rem;
+  font-weight: 600;
+  padding: 10px;
+  width: 120px;
+}
+
+button:hover {
+  background: #000;
+  color: #FFF;
+}
+
+/***** Images *****/
+
+#successImg {
+  display: block;
+  height: 300px;
+  margin: 20px auto;
+}
+
+/***** Animation *****/
+
+/* Hides input labels outside of div overflow */
+.hide-labels {
+  transform: translateX(140px);
+  transition: transform 250ms, color 100ms;
+}
+
+/* Slides labels into view */
+.slide-in-labels {
+  transform: translateX(0);
+}
+
+/* Slides placeholder text to the left with negative text-indent property */
+.slide-placeholder-out::-webkit-input-placeholder {
+  text-indent: -100%;
+}
+
+/***** About *****/
+
+.img-filter, .profile-img {
+	border-radius: 50%;
+}
+
+.img-filter {
+	position: absolute;
+	top: 10px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	transition: background-color 2s, border-radius 50ms;
+	background-color: #0099ff;
+	opacity: .4;
+	height: 20rem;
+	width: 20rem;
+}
+
+.profile-img {
+	border: 3px solid #000;
+	display: block;
+	position: relative;
+	transition: width 200ms;
+	margin: auto;
+  vertical-align: middle;
+	width: 15rem;
+  z-index: 100;
+}
+
+#bio {
+	position: relative;
+  top: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+#bio span {
+	color: #fff;
+	font-size: 3rem;
+	position: absolute;
+	left: 0;
+	right: 10rem;
+	overflow: hidden;
+	width: 0;
+	margin: auto;
+	white-space: nowrap;
+}
+
+#about-one,
+#about-two,
+#about-three {
+  height: 100vh;
+}
+
+#about-three div {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#about-three div img {
+  padding: 10px;
+}
+
+#about-three h2 {
+  color: #fff;
+  text-align: center;
+  font-size: 5rem;
+  opacity: 0;
+}
+
+#about-three img {
+  opacity: 0;
+  height: 200px;
+  transition: opacity 1500ms;
+}
+
+/***** Work *****/
+
+.work-block {
+	padding: 0 20px;
+}
+
+.work-block ul {
+	padding-left: 20px;
+}
+
+.work-block ul:last-child {
+	padding-left: 40px;
+}
+
+.work-block img {
+	border-radius: 5px;
+	margin-right: 10px;
+	width: 50%;
+}
+
+/*
+ * Found sticky footer style
+ * http://ryanfait.com/resources/footer-stick-to-bottom-of-page/
+ */
+footer {
+	color: #777;
+	font-size: .7rem;
+	text-align: center;
+	width: 100%;
+}
+
+footer ul {
+	padding-left: 0;
+}
+
+footer, .push {
+	height: 4em;
+}
